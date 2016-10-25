@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Register
-    Created on : Oct 17, 2016, 12:36:01 AM
+    Document   : LoginAdm
+    Created on : Oct 16, 2016, 5:27:17 PM
     Author     : nawatsomnuek
 --%>
 
@@ -37,10 +37,11 @@
                                 <label for="Password">Password</label>
                                 <div class="bar"></div>
                             </div>
-                            <div class="input-container">
-                                <input type="password" id="Repeat Password" required="required"/>
-                                <label for="Repeat Password">Repeat Password</label>
-                                <div class="bar"></div>
+                            <div style="text-align: center;margin-bottom: 20px;font-size: 18px;color: red">
+                                <%if (request.getAttribute("messageLogin") != null) {
+                                %>
+                                <%=request.getAttribute("messageLogin")%>
+                                <%}%>
                             </div>
                             <div class="button-container">
                                 <button><span>Go</span></button>

@@ -23,7 +23,7 @@ import model.Customer;
  *
  * @author nawatsomnuek
  */
-public class CustomerServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,9 +39,6 @@ public class CustomerServlet extends HttpServlet {
         
         String fName = request.getParameter("fName");
         String lName = request.getParameter("lName");
-        String address = request.getParameter("address");
-        String province = request.getParameter("province");
-        String zipcode = request.getParameter("zipcode");
         String tel = request.getParameter("tel");
         String dobT = request.getParameter("dob");
         Date dob = null;
@@ -59,7 +56,7 @@ public class CustomerServlet extends HttpServlet {
 
         String question = request.getParameter("question");
         String andwer = request.getParameter("answer");
-        Customer c = new Customer(fName, lName, address, province, zipcode, tel, dob, email, password, question, andwer);
+        Customer c = new Customer(fName, lName, tel, dob, email, password, question, andwer);
         c.addRegis();
 
         getServletContext().getRequestDispatcher("/Register.jsp").forward(request, response);

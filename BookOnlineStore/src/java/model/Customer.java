@@ -10,6 +10,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,12 +36,9 @@ public class Customer {
     public Customer() {
     }
 
-    public Customer(String custFirstname, String custLastname, String custAddress, String custProvince, String custZipcode, String custTel,Date custDob, String custEmail, String custPassword, String custQuestion, String custAnswer) {
+    public Customer(String custFirstname, String custLastname, String custTel,Date custDob, String custEmail, String custPassword, String custQuestion, String custAnswer) {
         this.custFirstname = custFirstname;
         this.custLastname = custLastname;
-        this.custAddress = custAddress;
-        this.custProvince = custProvince;
-        this.custZipcode = custZipcode;
         this.custTel = custTel;
         this.custDob = custDob;
         this.custEmail = custEmail;
@@ -52,21 +50,18 @@ public class Customer {
     public void addRegis (){
         Connection conn = ConnectionBuilder.connect();
         
-        final String SQL_INSERT_REGIS = "INSERT INTO customers(custFirstName, custLastName, custAddress, custProvince, custZipcode, custTel, custDob, custEmail, custPassword, custQuestion, custAnswer) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        final String SQL_INSERT_REGIS = "INSERT INTO customers(custFirstName, custLastName, custTel, custDob, custEmail, custPassword, custQuestion, custAnswer) VALUES (?,?,?,?,?,?,?,?)";
         
         try {
             PreparedStatement pstm = conn.prepareStatement(SQL_INSERT_REGIS);
             pstm.setString(1, this.getCustFirstname());
             pstm.setString(2, this.getCustLastname());
-            pstm.setString(3, this.getCustAddress());
-            pstm.setString(4, this.getCustProvince());
-            pstm.setString(5, this.getCustZipcode());
-            pstm.setString(6, this.getCustTel());
-            pstm.setDate(7, this.getCustDob());
-            pstm.setString(8, this.getCustEmail());
-            pstm.setString(9, this.getCustPassword());
-            pstm.setString(10, this.getCustQuestion());
-            pstm.setString(11, this.getCustAnswer());
+            pstm.setString(3, this.getCustTel());
+            pstm.setDate(4, this.getCustDob());
+            pstm.setString(5, this.getCustEmail());
+            pstm.setString(6, this.getCustPassword());
+            pstm.setString(7, this.getCustQuestion());
+            pstm.setString(8, this.getCustAnswer());
             
             pstm.executeUpdate();
             pstm.close();
